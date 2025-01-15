@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
+
+const props = defineProps({
+    monthly: Object,
+    yearly: Object,
+});
 </script>
 
 <template>
@@ -66,7 +71,7 @@ import { Head } from "@inertiajs/vue3";
                         id="tier-hobby"
                         class="text-base font-semibold leading-7 text-indigo-600"
                     >
-                        Monthly
+                        {{ monthly.name }}
                     </h3>
                     <p class="mt-4 flex items-baseline gap-x-2">
                         <span
@@ -162,7 +167,7 @@ import { Head } from "@inertiajs/vue3";
                         id="tier-yearly"
                         class="text-base font-semibold leading-7 text-indigo-400"
                     >
-                        Yearly
+                        {{ yearly.name }}
                     </h3>
                     <p class="mt-4 flex items-baseline gap-x-2">
                         <span
