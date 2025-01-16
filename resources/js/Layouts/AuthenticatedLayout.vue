@@ -43,6 +43,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Plans
                                 </NavLink>
+                                <NavLink
+                                    :href="route('protected')"
+                                    :active="route().current('protected')"
+                                >
+                                    Protected
+                                </NavLink>
                             </div>
                         </div>
 
