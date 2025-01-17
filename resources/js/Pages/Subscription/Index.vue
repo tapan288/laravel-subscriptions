@@ -2,6 +2,13 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import Details from "./Details.vue";
+
+const props = defineProps({
+    plan: {
+        type: Object,
+        required: true,
+    },
+});
 </script>
 
 <template>
@@ -17,7 +24,7 @@ import Details from "./Details.vue";
         <div class="py-12">
             <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
                 <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
-                    <Details />
+                    <Details :plan="plan" />
                 </div>
             </div>
         </div>
