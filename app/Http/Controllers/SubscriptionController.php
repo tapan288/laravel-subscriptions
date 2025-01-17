@@ -23,6 +23,12 @@ class SubscriptionController extends Controller
                 'title' => $plan->title(),
                 'currency' => $plan->currency(),
             ],
+            'subscription' => [
+                'ends_at' => $request->user()->subscription()
+                    ?->ends_at?->toDateString(),
+                'diff_for_humans' => $request->user()->subscription()
+                    ?->ends_at?->diffForHumans(),
+            ],
             'upcoming' => [
                 'date' => $upcoming->date()->toDateString(),
                 'human_readable' => $upcoming->date()->diffForHumans(),
@@ -35,5 +41,19 @@ class SubscriptionController extends Controller
     {
         return $request->user()
             ->redirectToBillingPortal(route('subscription'));
+    }
+
+    public function resume(Request $request)
+    {
+        $request->user()->subscription()->resume();
+
+        return back();
+    }
+
+    public function cancel(Request $request)
+    {
+        $request->user()->subscription()->cancel();
+
+        return back();
     }
 }
