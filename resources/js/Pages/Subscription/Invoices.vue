@@ -15,10 +15,18 @@ defineProps({
         </header>
         <div class="mt-6 space-y-6">
             <ul>
-                <li v-for="(invoice, index) in invoices" :key="index">
+                <li v-for="invoice in invoices" :key="invoice.id">
                     <strong>{{ invoice.date }}</strong
                     >. {{ invoice.total }}.
-                    <a href="#" class="text-indigo-500">Download</a>
+                    <a
+                        :href="
+                            route('invoice.download', {
+                                invoice: invoice.id,
+                            })
+                        "
+                        class="text-indigo-500"
+                        >Download</a
+                    >
                 </li>
             </ul>
         </div>

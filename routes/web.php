@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
 
+    Route::get('invoice', [SubscriptionController::class, 'invoice'])->name('invoice.download');
+
     Route::group(['prefix' => 'subscription'], function () {
         Route::get('/', [SubscriptionController::class, 'index'])->name('subscription');
         Route::get('/portal', [SubscriptionController::class, 'portal'])->name('subscription.portal');
