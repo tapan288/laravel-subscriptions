@@ -4,6 +4,7 @@ import { Head } from "@inertiajs/vue3";
 import Details from "./Details.vue";
 import Resume from "./Resume.vue";
 import Cancel from "./Cancel.vue";
+import Invoices from "./Invoices.vue";
 
 const props = defineProps({
     plan: {
@@ -15,6 +16,10 @@ const props = defineProps({
         required: true,
     },
     subscription: {
+        type: Object,
+        required: true,
+    },
+    invoices: {
         type: Object,
         required: true,
     },
@@ -54,6 +59,10 @@ const props = defineProps({
                         class="bg-white p-4 shadow sm:rounded-lg sm:p-8"
                     >
                         <Cancel class="max-w-xl" />
+                    </div>
+
+                    <div class="bg-white p-4 shadow sm:rounded-lg sm:p-8">
+                        <Invoices class="max-w-xl" :invoices="invoices" />
                     </div>
                 </template>
             </div>
