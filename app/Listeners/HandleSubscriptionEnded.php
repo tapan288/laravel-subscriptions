@@ -2,11 +2,13 @@
 
 namespace App\Listeners;
 
+use App\Notifications\SubscriptionEnded;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Events\WebhookReceived;
 
-class HandleSubscriptionCreated
+class HandleSubscriptionEnded
 {
     /**
      * Create the event listener.
@@ -21,10 +23,12 @@ class HandleSubscriptionCreated
      */
     public function handle(WebhookReceived $event): void
     {
-        if ($event->payload['type'] != 'customer.subscription.created') {
+        if ($event->payload['type'] != 'customer.subscription.deleted') {
             return;
         }
 
-        info('Subscription created', $event->payload);
+        $user = Cashier::findBillable($event->payload['data']['object']['customer']);
+
+        $user->notify(new SubscriptionEnded());
     }
 }
