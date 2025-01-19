@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\InvoiceResource;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use App\Http\Resources\InvoiceResource;
 use App\Subscription\StripeSubscriptionDecorator;
 
 class SubscriptionController extends Controller
@@ -35,7 +35,9 @@ class SubscriptionController extends Controller
                 'human_readable' => $upcoming->date()->diffForHumans(),
                 'total' => $upcoming->total(),
             ],
-            'invoices' => InvoiceResource::collection($request->user()->invoices()),
+            'invoices' => InvoiceResource::collection(
+                $request->user()->invoices(),
+            ),
         ]);
     }
 

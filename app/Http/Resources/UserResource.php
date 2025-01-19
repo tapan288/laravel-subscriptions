@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'subscribed' => $this->subscribed(),
-            'subscription_canceled' => $this->subscription()->canceled(),
+            'subscription_canceled' => $this?->subscription()?->canceled(),
         ];
     }
 }
