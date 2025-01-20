@@ -21,8 +21,8 @@ class SubscriptionController extends Controller
 
         return Inertia::render('Subscription/Index', [
             'plan' => [
-                'title' => $plan->title(),
-                'currency' => $plan->currency(),
+                'title' => $plan?->title(),
+                'currency' => $plan?->currency(),
             ],
             'subscription' => [
                 'ends_at' => $request->user()->subscription()

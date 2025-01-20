@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
 
         JsonResource::withoutWrapping();
 
-        Cashier::keepPastDueSubscriptionsActive();
+        // Cashier::keepPastDueSubscriptionsActive();
     }
 }
