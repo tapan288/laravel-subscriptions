@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             'on_trial' => $this?->subscription()?->onTrial(),
             'trial_ends_at' => floor(now()->diffInDays($this?->subscription()?->trial_ends_at)),
             'subscription_canceled' => $this?->subscription()?->canceled(),
+            'has_incomplete_payment' => $this?->subscription()?->hasIncompletePayment(),
         ];
     }
 }

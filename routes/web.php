@@ -6,12 +6,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\ProtectedController;
-use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\RedirectIfCancelled;
-use App\Http\Middleware\RedirectIfNotCancelled;
-use App\Http\Middleware\RedirectIfNotSubscribed;
+use App\Http\Controllers\ProtectedController;
 use App\Http\Middleware\RedirectIfSubscribed;
+use App\Http\Middleware\RedirectIfNotCancelled;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Middleware\RedirectIfNotSubscribed;
 
 Route::get('/', HomeController::class)->name('home');
 

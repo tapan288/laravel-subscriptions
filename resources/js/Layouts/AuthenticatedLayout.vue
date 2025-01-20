@@ -55,11 +55,25 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="hidden sm:ms-6 sm:flex sm:items-center">
                             <div
-                                v-if="$page.props.auth.user.on_trial"
+                                v-if="$page.props.auth.user?.on_trial"
                                 class="text-sm mr-6 text-gray-500"
                             >
                                 Trial ends in
                                 {{ $page.props.auth.user.trial_ends_at }} days
+                            </div>
+                            <div
+                                v-if="
+                                    $page.props.auth.user
+                                        ?.has_incomplete_payment
+                                "
+                                class="text-sm mr-6 text-gray-500"
+                            >
+                                Your payment is failing
+                                <a
+                                    class="text-indigo-600"
+                                    :href="route('subscription.portal')"
+                                    >Update Card</a
+                                >
                             </div>
                             <!-- Settings Dropdown -->
                             <div class="relative ms-3">
