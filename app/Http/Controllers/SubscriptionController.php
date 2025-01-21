@@ -31,9 +31,9 @@ class SubscriptionController extends Controller
                     ?->ends_at?->diffForHumans(),
             ],
             'upcoming' => [
-                'date' => $upcoming->date()->toDateString(),
-                'human_readable' => $upcoming->date()->diffForHumans(),
-                'total' => $upcoming->total(),
+                'date' => $upcoming?->date()?->toDateString(),
+                'human_readable' => $upcoming?->date()?->diffForHumans(),
+                'total' => $upcoming?->total(),
             ],
             'invoices' => InvoiceResource::collection(
                 $request->user()->invoices(),

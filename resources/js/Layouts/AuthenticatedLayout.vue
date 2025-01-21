@@ -44,13 +44,16 @@ const showingNavigationDropdown = ref(false);
                                     Home
                                 </NavLink>
                                 <NavLink
+                                    v-if="
+                                        !$page.props.auth.user?.has_membership
+                                    "
                                     :href="route('plans')"
                                     :active="route().current('plans')"
                                 >
                                     Plans
                                 </NavLink>
                                 <NavLink
-                                    v-if="$page.props.auth.user?.subscribed"
+                                    v-if="$page.props.auth.user?.has_membership"
                                     :href="route('protected')"
                                     :active="route().current('protected')"
                                 >

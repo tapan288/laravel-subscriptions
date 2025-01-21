@@ -26,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'lifetime_membership',
     ];
 
     /**
@@ -49,5 +50,19 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function hasLifetimeMembership()
+    {
+        return $this->lifetime_membership;
+    }
+
+    public function hasMembership($type = 'default', $price = null)
+    {
+        if ($this->hasLifetimeMembership()) {
+            return true;
+        }
+
+        return $this->subscribed($type, $price);
     }
 }
