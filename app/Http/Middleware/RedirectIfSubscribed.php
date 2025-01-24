@@ -15,7 +15,7 @@ class RedirectIfSubscribed
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->hasMembership()) {
+        if ($request?->user()?->hasMembership()) {
             return redirect()->route('subscription');
         }
 

@@ -51,6 +51,9 @@ defineProps({
                     >
                         Manage Your Subscription
                     </a>
+                    <PrimaryLink :href="route('checkout.lifetime')">
+                        Swap to Lifetime
+                    </PrimaryLink>
                 </template>
                 <li v-if="$page.props.auth.user.subscription_canceled">
                     <strong>Subscription Ends at:</strong>:

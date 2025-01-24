@@ -31,9 +31,9 @@ class CheckoutController extends Controller
             ->where('type', 'lifetime')
             ->get('lifetime');
 
-        return $request->user()->checkout($plan['price_id'])
+        return $request->user()
             ->allowPromotionCodes()
-            ->checkout([
+            ->checkout($plan['price_id'], [
                 'success_url' => route('dashboard'),
                 'cancel_url' => route('plans'),
             ]);
